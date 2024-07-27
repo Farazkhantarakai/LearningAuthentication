@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.engine.jdbc.Size;
 
 import java.util.Date;
 import java.util.List;
@@ -21,6 +22,7 @@ public class ProductModel {
     private Long id;
     @Column(name = "product_name")
     private String productName;
+    @Column(unique = true,nullable = false)
     private String Sku;
   private String description;
   private Double price;
@@ -28,17 +30,15 @@ public class ProductModel {
   private Double averageRating;
   @Enumerated(EnumType.STRING)
   private Status status;
+
 // private  String mainImage;
-// @ElementCollection
-// private List<String> images;
+ @ElementCollection
+ private List<String> images;
   @ElementCollection
   private List<String> colors;
   private Integer stockQuantity;
 
 
-//
-//   @Embedded
-//    ProductReview productReview;
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdDate;
     @Temporal(TemporalType.TIMESTAMP)

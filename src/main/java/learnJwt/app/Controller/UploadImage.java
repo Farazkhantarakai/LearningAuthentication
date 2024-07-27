@@ -13,13 +13,10 @@ import java.util.*;
 @RestController
 public class UploadImage {
 
+  // this is the path where i will be storing images
   String directory = "src/main/resources/static/images";
   @PostMapping("/uploadImage")
   public ResponseEntity<String> uploader(@RequestParam("image") MultipartFile image) {
-
-
-
-
     try {
       //this will set path inthe  local directory
       Path path = Path.of(directory);
